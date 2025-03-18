@@ -72,6 +72,24 @@ The application is containerized with Docker for consistent deployment across en
 
 ### Running with Docker
 
+#### Simple Script for Environment Variables
+
+The easiest way to run the application with Docker:
+
+```bash
+# Make the script executable (first time only)
+chmod +x docker-run-with-env.sh
+
+# Run development version with API key from command line
+./docker-run-with-env.sh dev --key YOUR_GEMINI_API_KEY
+
+# Run production version with API key from .env.production file
+./docker-run-with-env.sh prod --env .env.production
+
+# Run in background
+./docker-run-with-env.sh prod --key YOUR_GEMINI_API_KEY background
+```
+
 #### Development Mode
 
 ```bash
@@ -104,6 +122,9 @@ docker build -t ranjan-ai-dev -f Dockerfile.dev .
 
 # Build production image
 docker build -t ranjan-ai-prod -f Dockerfile .
+
+# Build with environment variables
+docker build -t ranjan-ai-prod --build-arg REACT_APP_GEMINI_API_KEY=your_key -f Dockerfile .
 ```
 
 ### Running Docker Containers Manually
@@ -113,8 +134,18 @@ docker build -t ranjan-ai-prod -f Dockerfile .
 docker run -p 3000:3000 -v ${PWD}:/app -v /app/node_modules --env-file .env ranjan-ai-dev
 
 # Run production container
-docker run -p 80:80 ranjan-ai-prod
+docker run -p 80:80 -e REACT_APP_GEMINI_API_KEY=your_key ranjan-ai-prod
 ```
+
+### Docker Features
+
+The Docker setup includes:
+
+- **Multi-stage builds** for smaller production images
+- **Environment variable handling** at build and runtime
+- **Healthchecks** to ensure application availability
+- **Resource constraints** to limit CPU and memory usage
+- **Nginx configuration** for proper SPA routing
 
 ## Deployment
 
