@@ -18,12 +18,14 @@ A modern AI chatbot application featuring a beautiful iOS-style UI, Hinglish lan
 - **AI**: Google Gemini API
 - **Storage**: IndexedDB with localStorage fallback
 - **Hosting**: Firebase Hosting
+- **Containerization**: Docker
 
 ## Prerequisites
 
 - Node.js (v14 or higher)
 - Firebase project with Hosting enabled
 - Google Gemini API key
+- Docker (optional, for containerized deployment)
 
 ## Setup
 
@@ -62,6 +64,56 @@ This will start the development server at [http://localhost:3000](http://localho
 
 ```bash
 npm run build
+```
+
+## Docker Support
+
+The application is containerized with Docker for consistent deployment across environments.
+
+### Running with Docker
+
+#### Development Mode
+
+```bash
+# Build and start the development container
+docker-compose up app-dev
+
+# Or build and run in background
+docker-compose up -d app-dev
+```
+
+This starts the application with hot reloading at [http://localhost:3000](http://localhost:3000).
+
+#### Production Mode
+
+```bash
+# Build and start the production container
+docker-compose up app-prod
+
+# Or build and run in background
+docker-compose up -d app-prod
+```
+
+This builds the optimized production version and serves it via Nginx at [http://localhost](http://localhost).
+
+### Building Docker Images Manually
+
+```bash
+# Build development image
+docker build -t ranjan-ai-dev -f Dockerfile.dev .
+
+# Build production image
+docker build -t ranjan-ai-prod -f Dockerfile .
+```
+
+### Running Docker Containers Manually
+
+```bash
+# Run development container
+docker run -p 3000:3000 -v ${PWD}:/app -v /app/node_modules --env-file .env ranjan-ai-dev
+
+# Run production container
+docker run -p 80:80 ranjan-ai-prod
 ```
 
 ## Deployment
@@ -109,3 +161,7 @@ The application is designed for optimal use on mobile devices:
 - Responsive layout adapts to different screen sizes
 - Touch-friendly controls
 - Installable as a home screen app
+
+```
+
+```
