@@ -1,46 +1,225 @@
-# Getting Started with Create React App
+# RanjanchatAI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern AI chatbot application with user authentication, chat history storage, and a beautiful iOS-style UI.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- 🤖 Powered by Google's Gemini AI
+- 🔐 User authentication with Firebase
+- 💾 Chat history storage with MongoDB
+- 📱 Modern iOS-style UI
+- 📝 Markdown support in messages
+- 🌐 Responsive design for all devices
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **Frontend**: React, TypeScript, Styled Components
+- **Backend**: Node.js, Express
+- **Database**: MongoDB Atlas
+- **Authentication**: Firebase Authentication
+- **AI**: Google Gemini API
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Prerequisites
 
-### `npm test`
+- Node.js (v14 or higher)
+- Firebase project with Authentication enabled
+- MongoDB Atlas account
+- Google Gemini API key
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Setup
 
-### `npm run build`
+### 1. Clone the repository
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+git clone <repository-url>
+cd ai-chatbot
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 2. Install dependencies
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm run install-all
+```
 
-### `npm run eject`
+This will install dependencies for both the client and server.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### 3. Configure environment variables
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Client
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Create a `.env` file in the root directory with the following variables:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+# Firebase Configuration
+REACT_APP_FIREBASE_API_KEY=your-api-key
+REACT_APP_FIREBASE_AUTH_DOMAIN=your-project-id.firebaseapp.com
+REACT_APP_FIREBASE_PROJECT_ID=your-project-id
+REACT_APP_FIREBASE_STORAGE_BUCKET=your-project-id.appspot.com
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your-messaging-sender-id
+REACT_APP_FIREBASE_APP_ID=your-app-id
 
-## Learn More
+# Gemini API Key
+REACT_APP_GEMINI_API_KEY=your-gemini-api-key
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Server API URL
+REACT_APP_API_URL=http://localhost:5000/api
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Server
+
+1. Run the setup script to configure your Firebase service account:
+
+```bash
+cd server
+npm run setup
+```
+
+2. Follow the prompts to set up your Firebase service account.
+
+3. Update the MongoDB connection string in the `server/.env` file:
+
+```
+MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/ranjanchatai?retryWrites=true&w=majority
+```
+
+### 4. Run the application
+
+```bash
+npm run dev
+```
+
+This will start both the client and server concurrently.
+
+- Client: http://localhost:3000
+- Server: http://localhost:5000
+
+## Deployment
+
+### Firebase Hosting Deployment
+
+To deploy the frontend to Firebase Hosting:
+
+1. **Build the application**:
+
+   ```bash
+   npm run build
+   ```
+
+2. **Deploy to Firebase Hosting**:
+
+   ```bash
+   firebase deploy --only hosting
+   ```
+
+3. **Verify Deployment**:
+   - Visit your Firebase hosting URL: https://chatbotai-40d8b.web.app
+   - Test the chat functionality
+
+### Environment Variables
+
+The application uses the following environment variables:
+
+- **Firebase Configuration**:
+
+  - `REACT_APP_FIREBASE_API_KEY`
+  - `REACT_APP_FIREBASE_AUTH_DOMAIN`
+  - `REACT_APP_FIREBASE_PROJECT_ID`
+  - `REACT_APP_FIREBASE_STORAGE_BUCKET`
+  - `REACT_APP_FIREBASE_MESSAGING_SENDER_ID`
+  - `REACT_APP_FIREBASE_APP_ID`
+
+- **Gemini API Key**:
+  - `REACT_APP_GEMINI_API_KEY`
+
+## Project Structure
+
+```
+ai-chatbot/
+├── public/                 # Static files
+├── server/                 # Backend server
+│   ├── scripts/            # Server scripts
+│   └── server.js           # Main server file
+└── src/
+    ├── components/         # React components
+    ├── contexts/           # React contexts
+    ├── firebase/           # Firebase configuration
+    ├── services/           # API services
+    └── types/              # TypeScript types
+```
+
+## License
+
+MIT
+
+## Deployment Instructions
+
+### Firebase Functions Deployment
+
+To deploy the backend to Firebase Functions:
+
+1. **Upgrade to Firebase Blaze Plan**:
+
+   - Go to [Firebase Console](https://console.firebase.google.com/project/chatbotai-40d8b/overview)
+   - Click on "Upgrade" to switch to the Blaze (pay-as-you-go) plan
+   - Complete the upgrade process
+
+2. **Deploy Firebase Functions**:
+
+   ```bash
+   cd functions
+   npm install
+   cd ..
+   firebase deploy --only functions
+   ```
+
+3. **Deploy Frontend**:
+
+   ```bash
+   npm run build
+   firebase deploy --only hosting
+   ```
+
+4. **Verify Deployment**:
+   - Visit your Firebase hosting URL: https://chatbotai-40d8b.web.app
+   - Test login functionality
+   - Test chat functionality
+   - Verify that chat history is saved
+
+### Environment Variables
+
+The application uses the following environment variables:
+
+- **Firebase Configuration**:
+
+  - `REACT_APP_FIREBASE_API_KEY`
+  - `REACT_APP_FIREBASE_AUTH_DOMAIN`
+  - `REACT_APP_FIREBASE_PROJECT_ID`
+  - `REACT_APP_FIREBASE_STORAGE_BUCKET`
+  - `REACT_APP_FIREBASE_MESSAGING_SENDER_ID`
+  - `REACT_APP_FIREBASE_APP_ID`
+
+- **Gemini API Key**:
+
+  - `REACT_APP_GEMINI_API_KEY`
+
+- **Server API URL**:
+  - `REACT_APP_API_URL` (Firebase Functions URL)
+
+### MongoDB Configuration
+
+The MongoDB connection string is stored in Firebase Functions configuration:
+
+```bash
+firebase functions:config:set mongodb.uri="your-mongodb-connection-string"
+```
+
+## Development
+
+To run the application locally:
+
+```bash
+npm install
+npm start
+```
+
+The application will be available at http://localhost:3000.

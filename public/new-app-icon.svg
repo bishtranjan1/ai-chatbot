@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Define gradients -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5856D6" />
+      <stop offset="100%" stop-color="#3634A3" />
+    </linearGradient>
+    <linearGradient id="bubbleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#F5F5F7" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="10" flood-color="#000000" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  
+  <!-- Rounded square background (iOS app icon style) -->
+  <rect x="32" y="32" width="448" height="448" rx="100" ry="100" fill="url(#bgGradient)" />
+  
+  <!-- Multiple chat bubbles for a more dynamic look -->
+  <!-- Main bubble -->
+  <path d="M256 140c70.7 0 128 46.3 128 103.4 0 23.4-9.4 45.1-25.7 62.4-1.2 1.3-1.9 3-1.9 4.8v31.4c0 3.7-4 6-7.2 4.2l-32.6-17.7c-1.5-0.8-3.3-1-4.9-0.5-17.2 5.6-35.8 8.7-55.7 8.7-70.7 0-128-46.3-128-103.4S185.3 140 256 140z" fill="url(#bubbleGradient)" filter="url(#shadow)" />
+  
+  <!-- Small decorative bubble 1 -->
+  <circle cx="160" cy="300" r="25" fill="#5856D6" opacity="0.7" />
+  
+  <!-- Small decorative bubble 2 -->
+  <circle cx="350" cy="350" r="20" fill="#5856D6" opacity="0.5" />
+  
+  <!-- Letter R in a modern style -->
+  <path d="M230 190h40c22 0 35 15 35 35 0 15-8 27-22 32l20 38h-30l-18-35h-5v35h-20V190zm20 20v30h15c8 0 15-6 15-15s-7-15-15-15h-15z" fill="#FFFFFF" />
+  
+  <!-- Subtle shadow for depth -->
+  <rect x="32" y="32" width="448" height="448" rx="100" ry="100" fill="black" opacity="0.05" filter="blur(20px)" transform="translate(10, 10)" />
+</svg> 

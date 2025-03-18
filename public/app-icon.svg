@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Background with iOS gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0A84FF" />
+      <stop offset="100%" stop-color="#0062CC" />
+    </linearGradient>
+    <linearGradient id="bubbleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#F5F5F7" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Rounded square background (iOS app icon style) -->
+  <rect x="32" y="32" width="448" height="448" rx="100" ry="100" fill="url(#bgGradient)" />
+  
+  <!-- Chat Bubble -->
+  <path d="M144 160h224c13.3 0 24 10.7 24 24v128c0 13.3-10.7 24-24 24h-80l-48 48v-48h-96c-13.3 0-24-10.7-24-24V184c0-13.3 10.7-24 24-24z" fill="url(#bubbleGradient)" />
+  
+  <!-- Letter R -->
+  <path d="M220 200h40c16.5 0 30 13.5 30 30 0 12-7.5 22.5-18 27l18 33h-27l-15-30h-3v30h-25V200zm25 22.5v22.5h7.5c6 0 11.25-5.25 11.25-11.25s-5.25-11.25-11.25-11.25h-7.5z" fill="#0A84FF" />
+  
+  <!-- Subtle shadow for depth -->
+  <rect x="32" y="32" width="448" height="448" rx="100" ry="100" fill="black" opacity="0.1" filter="blur(20px)" transform="translate(10, 10)" />
+</svg> 
