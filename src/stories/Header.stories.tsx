@@ -362,11 +362,12 @@ export const Default: Story = {
   render: HeaderWithState,
   args: {
     isHinglishMode: true,
-    toggleSidebar: undefined,
+    toggleSidebar: () => {},
     hasMessages: true,
-    onSaveChat: undefined,
+    onSaveChat: () => {},
     isSaving: false,
     showDownloadLink: true,
+    toggleHinglishMode: () => {},
   },
 };
 
@@ -374,11 +375,12 @@ export const NoMessages: Story = {
   render: HeaderWithState,
   args: {
     isHinglishMode: true,
-    toggleSidebar: undefined,
+    toggleSidebar: () => {},
     hasMessages: false,
-    onSaveChat: undefined,
+    onSaveChat: () => {},
     isSaving: false,
     showDownloadLink: true,
+    toggleHinglishMode: () => {},
   },
 };
 
@@ -386,23 +388,25 @@ export const EnglishMode: Story = {
   render: HeaderWithState,
   args: {
     isHinglishMode: false,
-    toggleSidebar: undefined,
+    toggleSidebar: () => {},
     hasMessages: true,
-    onSaveChat: undefined,
+    onSaveChat: () => {},
     isSaving: false,
     showDownloadLink: true,
+    toggleHinglishMode: () => {},
   },
 };
 
-export const SavingState: Story = {
+export const Saving: Story = {
   render: HeaderWithState,
   args: {
     isHinglishMode: true,
-    toggleSidebar: undefined,
+    toggleSidebar: () => {},
     hasMessages: true,
-    onSaveChat: undefined,
+    onSaveChat: () => {},
     isSaving: true,
     showDownloadLink: true,
+    toggleHinglishMode: () => {},
   },
 };
 
@@ -410,10 +414,11 @@ export const WithoutDownloadLink: Story = {
   render: HeaderWithState,
   args: {
     isHinglishMode: true,
-    toggleSidebar: undefined,
+    toggleSidebar: () => {},
     hasMessages: true,
-    onSaveChat: undefined,
+    onSaveChat: () => {},
     isSaving: false,
     showDownloadLink: false,
+    toggleHinglishMode: () => {},
   },
 };
