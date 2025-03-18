@@ -1,29 +1,28 @@
 # RanjanchatAI
 
-A modern AI chatbot application with user authentication, chat history storage, and a beautiful iOS-style UI.
+A modern AI chatbot application featuring a beautiful iOS-style UI, Hinglish language support, and offline capabilities.
 
 ## Features
 
 - 🤖 Powered by Google's Gemini AI
-- 🔐 User authentication with Firebase
-- 💾 Chat history storage with MongoDB
+- 💾 Local chat history storage using IndexedDB with localStorage fallback
 - 📱 Modern iOS-style UI
 - 📝 Markdown support in messages
 - 🌐 Responsive design for all devices
+- 🇮🇳 Hinglish language support
+- 📲 Installable as a PWA (Progressive Web App)
 
 ## Tech Stack
 
 - **Frontend**: React, TypeScript, Styled Components
-- **Backend**: Node.js, Express
-- **Database**: MongoDB Atlas
-- **Authentication**: Firebase Authentication
 - **AI**: Google Gemini API
+- **Storage**: IndexedDB with localStorage fallback
+- **Hosting**: Firebase Hosting
 
 ## Prerequisites
 
 - Node.js (v14 or higher)
-- Firebase project with Authentication enabled
-- MongoDB Atlas account
+- Firebase project with Hosting enabled
 - Google Gemini API key
 
 ## Setup
@@ -31,195 +30,82 @@ A modern AI chatbot application with user authentication, chat history storage, 
 ### 1. Clone the repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/bishtranjan1/ai-chatbot.git
 cd ai-chatbot
 ```
 
 ### 2. Install dependencies
 
 ```bash
-npm run install-all
+npm install
 ```
-
-This will install dependencies for both the client and server.
 
 ### 3. Configure environment variables
 
-#### Client
-
 Create a `.env` file in the root directory with the following variables:
 
-```
-# Firebase Configuration
-REACT_APP_FIREBASE_API_KEY=your-api-key
-REACT_APP_FIREBASE_AUTH_DOMAIN=your-project-id.firebaseapp.com
-REACT_APP_FIREBASE_PROJECT_ID=your-project-id
-REACT_APP_FIREBASE_STORAGE_BUCKET=your-project-id.appspot.com
-REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your-messaging-sender-id
-REACT_APP_FIREBASE_APP_ID=your-app-id
-
-# Gemini API Key
-REACT_APP_GEMINI_API_KEY=your-gemini-api-key
-
-# Server API URL
-REACT_APP_API_URL=http://localhost:5000/api
+```env
+REACT_APP_GEMINI_API_KEY=your_gemini_api_key
 ```
 
-#### Server
+For production, create a `.env.production` file with the same variables.
 
-1. Run the setup script to configure your Firebase service account:
+### 4. Running locally
 
 ```bash
-cd server
-npm run setup
-```
-
-2. Follow the prompts to set up your Firebase service account.
-
-3. Update the MongoDB connection string in the `server/.env` file:
-
-```
-MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/ranjanchatai?retryWrites=true&w=majority
-```
-
-### 4. Run the application
-
-```bash
-npm run dev
-```
-
-This will start both the client and server concurrently.
-
-- Client: http://localhost:3000
-- Server: http://localhost:5000
-
-## Deployment
-
-### Firebase Hosting Deployment
-
-To deploy the frontend to Firebase Hosting:
-
-1. **Build the application**:
-
-   ```bash
-   npm run build
-   ```
-
-2. **Deploy to Firebase Hosting**:
-
-   ```bash
-   firebase deploy --only hosting
-   ```
-
-3. **Verify Deployment**:
-   - Visit your Firebase hosting URL: https://chatbotai-40d8b.web.app
-   - Test the chat functionality
-
-### Environment Variables
-
-The application uses the following environment variables:
-
-- **Firebase Configuration**:
-
-  - `REACT_APP_FIREBASE_API_KEY`
-  - `REACT_APP_FIREBASE_AUTH_DOMAIN`
-  - `REACT_APP_FIREBASE_PROJECT_ID`
-  - `REACT_APP_FIREBASE_STORAGE_BUCKET`
-  - `REACT_APP_FIREBASE_MESSAGING_SENDER_ID`
-  - `REACT_APP_FIREBASE_APP_ID`
-
-- **Gemini API Key**:
-  - `REACT_APP_GEMINI_API_KEY`
-
-## Project Structure
-
-```
-ai-chatbot/
-├── public/                 # Static files
-├── server/                 # Backend server
-│   ├── scripts/            # Server scripts
-│   └── server.js           # Main server file
-└── src/
-    ├── components/         # React components
-    ├── contexts/           # React contexts
-    ├── firebase/           # Firebase configuration
-    ├── services/           # API services
-    └── types/              # TypeScript types
-```
-
-## License
-
-MIT
-
-## Deployment Instructions
-
-### Firebase Functions Deployment
-
-To deploy the backend to Firebase Functions:
-
-1. **Upgrade to Firebase Blaze Plan**:
-
-   - Go to [Firebase Console](https://console.firebase.google.com/project/chatbotai-40d8b/overview)
-   - Click on "Upgrade" to switch to the Blaze (pay-as-you-go) plan
-   - Complete the upgrade process
-
-2. **Deploy Firebase Functions**:
-
-   ```bash
-   cd functions
-   npm install
-   cd ..
-   firebase deploy --only functions
-   ```
-
-3. **Deploy Frontend**:
-
-   ```bash
-   npm run build
-   firebase deploy --only hosting
-   ```
-
-4. **Verify Deployment**:
-   - Visit your Firebase hosting URL: https://chatbotai-40d8b.web.app
-   - Test login functionality
-   - Test chat functionality
-   - Verify that chat history is saved
-
-### Environment Variables
-
-The application uses the following environment variables:
-
-- **Firebase Configuration**:
-
-  - `REACT_APP_FIREBASE_API_KEY`
-  - `REACT_APP_FIREBASE_AUTH_DOMAIN`
-  - `REACT_APP_FIREBASE_PROJECT_ID`
-  - `REACT_APP_FIREBASE_STORAGE_BUCKET`
-  - `REACT_APP_FIREBASE_MESSAGING_SENDER_ID`
-  - `REACT_APP_FIREBASE_APP_ID`
-
-- **Gemini API Key**:
-
-  - `REACT_APP_GEMINI_API_KEY`
-
-- **Server API URL**:
-  - `REACT_APP_API_URL` (Firebase Functions URL)
-
-### MongoDB Configuration
-
-The MongoDB connection string is stored in Firebase Functions configuration:
-
-```bash
-firebase functions:config:set mongodb.uri="your-mongodb-connection-string"
-```
-
-## Development
-
-To run the application locally:
-
-```bash
-npm install
 npm start
 ```
 
-The application will be available at http://localhost:3000.
+This will start the development server at [http://localhost:3000](http://localhost:3000).
+
+## Building for Production
+
+```bash
+npm run build
+```
+
+## Deployment
+
+The application is configured for Firebase Hosting deployment:
+
+```bash
+# Install Firebase CLI if you haven't already
+npm install -g firebase-tools
+
+# Login to Firebase
+firebase login
+
+# Initialize Firebase (first time only)
+firebase init
+
+# Deploy to Firebase Hosting
+firebase deploy --only hosting
+```
+
+## Live Demo
+
+The application is deployed at: [https://chatbotai-40d8b.web.app](https://chatbotai-40d8b.web.app)
+
+## Key Features
+
+### Hinglish Support
+
+The chatbot can understand and respond in Hinglish (Hindi-English mix) when:
+
+- User writes messages in Hinglish
+- User activates the Hinglish mode using the toggle
+
+### Offline Storage
+
+Chat history is stored locally in your browser using:
+
+- Primary: IndexedDB for efficient storage of larger data
+- Fallback: localStorage for browsers without IndexedDB support
+
+### Mobile-First Design
+
+The application is designed for optimal use on mobile devices:
+
+- Responsive layout adapts to different screen sizes
+- Touch-friendly controls
+- Installable as a home screen app

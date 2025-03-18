@@ -354,15 +354,11 @@ const Chat: React.FC = () => {
   const [customTitle, setCustomTitle] = useState("");
   const [suggestedTitle, setSuggestedTitle] = useState("");
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  const [isVerySmallScreen, setIsVerySmallScreen] = useState(
-    window.innerWidth <= 320
-  );
 
   // Handle window resize for responsive elements
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
-      setIsVerySmallScreen(window.innerWidth <= 320);
     };
 
     window.addEventListener("resize", handleResize);
