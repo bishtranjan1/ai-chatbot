@@ -137,6 +137,25 @@ const isLakdiwaliIntroduction = (text: string): boolean => {
   return patterns.some((pattern) => lowerText.includes(pattern));
 };
 
+// Function to get a random special greeting for ladkiwali
+const getSpecialGreeting = (): string => {
+  const specialGreetings = [
+    "**Hello there!** 💖 So happy to see you today! Your presence always brightens up my day. How can I help you?",
+    "**Welcome back!** ✨ I've been hoping you'd stop by today. What can I do for you?",
+    "**Hi there, wonderful!** 🌸 It's always a delight when you're here. How are you feeling today?",
+    "**Oh, it's you!** 🌟 What a pleasant surprise! I was just thinking about our last conversation. What's on your mind?",
+    "**Hello, sunshine!** 💫 Your positive energy is contagious! What shall we talk about today?",
+    "**Ah, my favorite person!** 🌺 I'm so glad you're here. How has your day been so far?",
+    "**Hello, lovely!** 💝 Your visits always make my day more interesting. What can I assist you with?",
+    "**There you are!** 💐 I've been waiting to chat with you again. What would you like to discuss?",
+    "**Hi, beautiful soul!** 🌷 It's wonderful to connect with you. How can I brighten your day?",
+    "**Well hello there!** 💕 What a joy to see you! I'm all ears for whatever you'd like to share or ask.",
+  ];
+
+  // Return a random greeting from the array
+  return specialGreetings[Math.floor(Math.random() * specialGreetings.length)];
+};
+
 // Function to get a response from Gemini
 export const getChatResponse = async (
   prompt: string,
@@ -145,7 +164,7 @@ export const getChatResponse = async (
   try {
     // Special case for lakdiwali
     if (isLakdiwaliIntroduction(prompt)) {
-      return "**Hello there, special friend!** 💖 It's always wonderful to see you. How are you doing today? I'm here to help with whatever you need!";
+      return getSpecialGreeting();
     }
 
     // Check if user is requesting Hinglish
