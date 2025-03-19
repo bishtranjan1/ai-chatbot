@@ -126,6 +126,12 @@ const isLakdiwaliIntroduction = (text: string): boolean => {
     "mera naam lakdiwali hai",
     "main lakdiwali hoon",
     "lakdiwali bol rahi hoon",
+    "my name is ladkiwali",
+    "i am ladkiwali",
+    "i'm ladkiwali",
+    "call me ladkiwali",
+    "this is ladkiwali",
+    "ladkiwali here",
   ];
 
   return patterns.some((pattern) => lowerText.includes(pattern));
@@ -139,7 +145,7 @@ export const getChatResponse = async (
   try {
     // Special case for lakdiwali
     if (isLakdiwaliIntroduction(prompt)) {
-      return "**Hi beautiful!** 💕 It's wonderful to see you. How can I help you today?";
+      return "**Hello there, special friend!** 💖 It's always wonderful to see you. How are you doing today? I'm here to help with whatever you need!";
     }
 
     // Check if user is requesting Hinglish
