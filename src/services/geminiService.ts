@@ -113,12 +113,35 @@ const isHinglishMessage = (text: string): boolean => {
   return hindiWordCount >= 2 && hindiWordCount / words.length >= 0.15;
 };
 
+// Helper function to detect if user is saying their name is lakdiwali
+const isLakdiwaliIntroduction = (text: string): boolean => {
+  const lowerText = text.toLowerCase();
+  const patterns = [
+    "my name is lakdiwali",
+    "i am lakdiwali",
+    "i'm lakdiwali",
+    "call me lakdiwali",
+    "this is lakdiwali",
+    "lakdiwali here",
+    "mera naam lakdiwali hai",
+    "main lakdiwali hoon",
+    "lakdiwali bol rahi hoon",
+  ];
+
+  return patterns.some((pattern) => lowerText.includes(pattern));
+};
+
 // Function to get a response from Gemini
 export const getChatResponse = async (
   prompt: string,
   forceHinglish: boolean = false
 ): Promise<string> => {
   try {
+    // Special case for lakdiwali
+    if (isLakdiwaliIntroduction(prompt)) {
+      return "**Hi beautiful!** 💕 It's wonderful to see you. How can I help you today?";
+    }
+
     // Check if user is requesting Hinglish
     if (isRequestingHinglish(prompt)) {
       useHinglish = true;
